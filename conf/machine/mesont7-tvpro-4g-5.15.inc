@@ -42,7 +42,7 @@ DISTRO_FEATURES:append = " aml-libjpeg"
 DISTRO_FEATURES:append = " aml-libmultienc"
 DISTRO_FEATURES:append = " aml-libamvenc"
 DISTRO_FEATURES:append = " aml-isp arm-isp "
-DISTRO_FEATURES:append = " amlogic-tv "
+DISTRO_FEATURES:append = " amlogic-tv-streambox "
 DISTRO_FEATURES:append = " softap"
 
 DISTRO_FEATURES:append = " mediactrlsrc-cam"
