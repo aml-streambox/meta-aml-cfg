@@ -13,7 +13,7 @@ require conf/machine/include/amlogic_gondul.inc
 
 MACHINE_EXTRA_RRECOMMENDS += " \
         gpu \
-        wififw-ap6275 \
+        wififw-ap6256 \
         ap6xxx \
         adla-driver \
 		coreutils \
@@ -32,7 +32,7 @@ KERNEL_DEVICETREE = "t7-a311d2-tvpro-4g.dtb"
 UBOOT_MACHINE = "t7_tvpro_config"
 KERNEL_MODULE_AUTOLOAD += " dhd"
 KERNEL_MODULE_PROBECONF += "dhd"
-module_conf_dhd = "options dhd firmware_path=../../etc/wifi/6275/ nvram_path=../../etc/wifi/6275/nvram_ap6275s.txt"
+module_conf_dhd = "options dhd firmware_path=../../etc/wifi/6256/ nvram_path=../../etc/wifi/6256/nvram_ap6256s.txt"
 KERNEL_MODULE_AUTOLOAD += " snd-soc-dummy_codec"
 KERNEL_MODULE_AUTOLOAD += " snd-soc-aml_t9015"
 KERNEL_MODULE_AUTOLOAD += " snd-soc-tas5707"
