@@ -86,8 +86,6 @@ RDEPENDS:packagegroup-amlogic-baserootfs = "\
     ${@bb.utils.contains('DISTRO_FEATURES', 'aml-cas', 'drmplayer-bin ffmpeg-vendor', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'amlogic-tv', '', 'aml-hdmicec', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'amlogic-tv', 'aml-tvserver', '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'amlogic-tv-streambox', '', 'aml-hdmicec', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'amlogic-tv-streambox', 'aml-tvserver-streambox', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'dtvkit', 'dtvkit-release-prebuilt', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'aml-dtv', 'aml-dtvdemod', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'playready', 'playready', '', d)} \
