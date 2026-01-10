@@ -164,6 +164,10 @@ RDEPENDS:packagegroup-amlogic-baserootfs = "\
     ${@bb.utils.contains('DISTRO_FEATURES', 'aml-libgdc', 'libgdc', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'bluetooth', 'bluez5-obex', '', d)} \
     web-ui-wifi \
+    cockpit \
+    cockpit-ws \
+    cockpit-shell \
+    cockpit-systemd \
     "
 
 #VENC related
