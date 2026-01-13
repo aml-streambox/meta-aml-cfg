@@ -57,3 +57,25 @@ EXTRA_BLUETOOTH_STUFF += " brcm-patchram-plus"
 DISTRO_FEATURES:append = "${EXTRA_BLUETOOTH_STUFF}"
 
 DISTRO_FEATURES:append = " wififw "
+
+# ============================================================
+# Development Environment Configuration
+# Full GNU tools to replace busybox + Python development
+# ============================================================
+RDEPENDS:packagegroup-amlogic-baserootfs:append = " \
+    python3 \
+    python3-pip \
+    python3-setuptools \
+    python3-wheel \
+    python3-dev \
+    coreutils \
+    findutils \
+    grep \
+    gawk \
+    sed \
+    tar \
+    wget \
+    diffutils \
+    patch \
+    file \
+    "

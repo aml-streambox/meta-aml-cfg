@@ -26,7 +26,14 @@ RDEPENDS:packagegroup-amlogic-baserootfs = "\
     bash \
     systemd \
     curl \
-    dropbear \
+    openssh \
+    openssh-sshd \
+    openssh-ssh \
+    openssh-keygen \
+    openssh-sftp-server \
+    vim \
+    htop \
+    screen \
     e2fsprogs \
     e2fsprogs-e2fsck \
     e2fsprogs-mke2fs \
@@ -168,6 +175,7 @@ RDEPENDS:packagegroup-amlogic-baserootfs = "\
     cockpit-ws \
     cockpit-shell \
     cockpit-systemd \
+    cockpit-gst-manager \
     "
 
 #VENC related
