@@ -173,8 +173,10 @@ RDEPENDS:packagegroup-amlogic-baserootfs = "\
     web-ui-wifi \
     cockpit \
     cockpit-ws \
+    cockpit-bridge \
     cockpit-shell \
     cockpit-systemd \
+    cockpit-users \
     cockpit-gst-manager \
     "
 
