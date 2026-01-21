@@ -178,6 +178,8 @@ RDEPENDS:packagegroup-amlogic-baserootfs = "\
     cockpit-systemd \
     cockpit-users \
     cockpit-gst-manager \
+    cockpit-navigator \
+    cockpit-streambox-settings \
     "
 
 #VENC related
