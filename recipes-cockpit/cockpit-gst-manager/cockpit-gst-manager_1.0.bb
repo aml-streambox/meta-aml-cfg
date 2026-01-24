@@ -1,10 +1,10 @@
 SUMMARY = "GStreamer management Cockpit plugin with AI-assisted pipeline generation"
 DESCRIPTION = "A Cockpit plugin for managing multiple GStreamer streaming/encoding pipelines on Amlogic A311D2"
-HOMEPAGE = "https://github.com/anshi233/cockpit-gst-manager"
+HOMEPAGE = "https://github.com/aml-streambox/cockpit-gst-manager"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=e4f899da08777ac405eece47fb5dff28"
 
-SRC_URI = "git://github.com/anshi233/cockpit-gst-manager.git;protocol=https;branch=main"
+SRC_URI = "git://github.com/aml-streambox/cockpit-gst-manager.git;protocol=https;branch=main"
 SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"

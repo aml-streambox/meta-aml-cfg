@@ -1,8 +1,0 @@
-[Unit]
-Description=StreamBox Config API Socket for Cockpit
-
-[Socket]
-ListenStream=9091
-
-[Install]
-WantedBy=sockets.target

@@ -1,16 +1,13 @@
 SUMMARY = "Cockpit plugin for managing Streambox settings"
-DESCRIPTION = "A Cockpit plugin for managing system settings on Amlogic A311D2 (T6/T7) Streambox"
+DESCRIPTION = "A Cockpit plugin for managing system settings on Amlogic A311D2 (T7) Streambox"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://${COREBASE}/../cockpit-streambox-settings/LICENSE;md5=7ce846976fa6121ba2d07662718f915a"
+LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-FILESEXTRAPATHS:prepend := "${COREBASE}/../cockpit-streambox-settings:"
+SRC_URI = "git://github.com/aml-streambox/cockpit-streambox-settings.git;protocol=ssh;branch=main"
 
-SRC_URI = "file://backend \
-           file://frontend \
-           file://yocto/files/streambox-settings.service \
-           file://yocto/files/org.cockpit.StreamboxSettings.conf"
+SRCREV = "${AUTOREV}"
 
-S = "${WORKDIR}"
+S = "${WORKDIR}/git"
 
 DEPENDS = "python3 cockpit"
 RDEPENDS:${PN} = "python3 python3-core python3-dbus cockpit \
