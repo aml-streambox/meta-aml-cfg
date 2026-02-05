@@ -24,7 +24,6 @@ IMAGE_FEATURES += "splash "
 IMAGE_INSTALL += " \
     packagegroup-amlogic-baserootfs \
     packagegroup-core-buildessential \
-    boa \
     ${@bb.utils.contains('DISTRO_FEATURES', 'selinux', 'auditd', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'selinux', bb.utils.contains('DISTRO_FEATURES', 'selinux-debug', \
     'packagegroup-core-selinux', 'packagegroup-selinux-minimal selinux-autorelabel', d), '', d)} \

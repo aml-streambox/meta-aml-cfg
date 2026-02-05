@@ -170,7 +170,6 @@ RDEPENDS:packagegroup-amlogic-baserootfs = "\
     ${@bb.utils.contains('DISTRO_FEATURES', 'brcm-patchram-plus', 'brcm-patchram-plus', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'aml-libgdc', 'libgdc', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'bluetooth', 'bluez5-obex', '', d)} \
-    web-ui-wifi \
     cockpit \
     cockpit-ws \
     cockpit-bridge \
@@ -185,7 +184,7 @@ RDEPENDS:packagegroup-amlogic-baserootfs = "\
 #VENC related
 RDEPENDS:packagegroup-amlogic-baserootfs += " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'gst-plugin-venc', bb.utils.contains('DISTRO_FEATURES', 'aml-libjpeg', 'gst-plugin-venc-jpeg', '', d), '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'gst-plugin-venc', bb.utils.contains('DISTRO_FEATURES', 'aml-libamvenc', 'gst-plugin-venc-amlvenc', '', d), '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'gst-plugin-venc', bb.utils.contains('DISTRO_FEATURES', 'aml-libmultienc', 'gst-plugin-venc-multienc', '', d), '', d)} \
     "
 
 #AML linux_sample_app screencapture related
