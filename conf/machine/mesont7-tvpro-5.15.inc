@@ -5,9 +5,9 @@
 
 include conf/machine/include/amlogic_weston.inc
 include conf/machine/include/amlogic_aiot_common.inc
-include conf/machine/include/amlogic_aiot_nndemo.inc
+#include conf/machine/include/amlogic_aiot_nndemo.inc
 include conf/machine/include/amlogic_enc_common.inc
-include conf/machine/include/amlogic_nnstreamer.inc
+#include conf/machine/include/amlogic_nnstreamer.inc
 
 require conf/machine/include/amlogic_gondul.inc
 
@@ -19,16 +19,16 @@ MACHINE_EXTRA_RRECOMMENDS += " \
 		coreutils \
         "
 
-RDEPENDS:packagegroup-amlogic-baserootfs:append = " isp isp-dev"
 RDEPENDS:packagegroup-amlogic-baserootfs:append = " cve libcve"
 RDEPENDS:packagegroup-amlogic-baserootfs:append = " adla-lib"
-RDEPENDS:packagegroup-amlogic-baserootfs:append = " npu-common npu-common-dev "
+#RDEPENDS:packagegroup-amlogic-baserootfs:append = " npu-common npu-common-dev "
 
 PREFERRED_VERSION_isp = "5.15"
 PREFERRED_VERSION_ap6xxx = "5.15"
-BOARD_NAME = "tvpro-8g"
+BOARD_NAME = "tvpro"
 CHIPSET_NAME = "A311D2"
-KERNEL_DEVICETREE = "t7-a311d2-tvpro-8g.dtb"
+# Multi-DTB support: T7/T7C chip with 4G/8G DDR variants
+KERNEL_DEVICETREE = "t7_a311d2_tvpro4g.dtb t7_a311d2_tvpro8g.dtb t7c_a311d2_tvpro4g.dtb t7c_a311d2_tvpro8g.dtb"
 UBOOT_MACHINE = "t7_tvpro_config"
 KERNEL_MODULE_AUTOLOAD += " dhd"
 KERNEL_MODULE_PROBECONF += "dhd"
