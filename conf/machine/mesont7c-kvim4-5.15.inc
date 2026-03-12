@@ -22,6 +22,7 @@ MACHINE_EXTRA_RRECOMMENDS += " \
 RDEPENDS:packagegroup-amlogic-baserootfs:append = " isp isp-dev"
 RDEPENDS:packagegroup-amlogic-baserootfs:append = " cve libcve"
 RDEPENDS:packagegroup-amlogic-baserootfs:append = " adla-lib"
+RDEPENDS:packagegroup-amlogic-baserootfs:append = " gst-aml-v10conv"
 RDEPENDS:packagegroup-amlogic-baserootfs:append = " npu-common npu-common-dev "
 RDEPENDS:packagegroup-amlogic-baserootfs:append = " khadas-custom khadas-gsensor "
 
