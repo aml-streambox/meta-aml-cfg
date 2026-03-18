@@ -21,7 +21,6 @@ MACHINE_EXTRA_RRECOMMENDS += " \
 
 RDEPENDS:packagegroup-amlogic-baserootfs:append = " cve libcve"
 RDEPENDS:packagegroup-amlogic-baserootfs:append = " adla-lib"
-RDEPENDS:packagegroup-amlogic-baserootfs:append = " gst-aml-v10conv"
 #RDEPENDS:packagegroup-amlogic-baserootfs:append = " npu-common npu-common-dev "
 
 PREFERRED_VERSION_isp = "5.15"
