@@ -86,6 +86,8 @@ RDEPENDS:packagegroup-amlogic-baserootfs = "\
     aml-ubootenv \
     aml-utils-simulate-key \
     vulkan-loader \
+    vfm-cap \
+    libvfmcap \
     ${@bb.utils.contains('DISTRO_FEATURES', 'aml-iptv', 'iptv-middlewave-bin', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'swupdate', 'cpio update-swfirmware', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'system-user', 'useradd', '', d)} \
@@ -118,6 +120,7 @@ RDEPENDS:packagegroup-amlogic-baserootfs = "\
         gst-aml-drm-plugins \
         gstreamer1.0-libav \
         gst-player \
+        gst-plugin-vfmcap \
         ', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'weston', \
         'wayland \
