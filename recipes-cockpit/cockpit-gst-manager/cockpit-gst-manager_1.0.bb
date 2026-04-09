@@ -5,7 +5,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=e4f899da08777ac405eece47fb5dff28"
 
 SRC_URI = "git://github.com/aml-streambox/cockpit-gst-manager.git;protocol=https;branch=main"
-SRCREV = "e0c410da37b8a9238dcdea77ece167ad74031f9d"
+SRCREV = "78035a293eb66601a62847ef7074d5da38ab0a67"
 
 S = "${WORKDIR}/git"
 
