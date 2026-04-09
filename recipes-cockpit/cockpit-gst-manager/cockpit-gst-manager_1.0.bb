@@ -5,7 +5,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=e4f899da08777ac405eece47fb5dff28"
 
 SRC_URI = "git://github.com/aml-streambox/cockpit-gst-manager.git;protocol=https;branch=main"
-SRCREV = "b3d834c25ac3a67ec45036c53f07e3b0abd39542"
+SRCREV = "e0c410da37b8a9238dcdea77ece167ad74031f9d"
 
 S = "${WORKDIR}/git"
 
@@ -28,6 +28,7 @@ RDEPENDS:${PN} = " \
     gstreamer1.0-plugins-base \
     gstreamer1.0-plugins-good \
     gstreamer1.0-plugins-bad \
+    gstreamer1.0-rtsp-server-meta \
     gst-plugin-vfmcap \
 "
 
