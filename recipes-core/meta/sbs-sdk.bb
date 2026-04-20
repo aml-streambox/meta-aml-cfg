@@ -21,6 +21,8 @@ TOOLCHAIN_TARGET_TASK = " \
     packagegroup-core-standalone-sdk-target \
     target-sdk-provides-dummy \
     glib-2.0-dev \
+    libion-dev \
+    libge2d-dev \
     vulkan-loader-dev \
     gstreamer1.0-dev \
     gstreamer1.0-plugins-base-dev \

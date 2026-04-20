@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 SRC_URI = "git://github.com/aml-streambox/cockpit-streambox-settings.git;protocol=https;branch=main"
 
-SRCREV = "${AUTOREV}"
+SRCREV = "7758b44d6e2beda682d50bad6928b2161638c329"
 
 S = "${WORKDIR}/git"
 
