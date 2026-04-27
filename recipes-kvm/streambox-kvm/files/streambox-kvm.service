@@ -1,0 +1,32 @@
+[Unit]
+Description=StreamBox KVM - IP-KVM over WebRTC
+Documentation=https://github.com/streambox/streambox-kvm
+After=network-online.target systemd-modules-load.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/var/lib/streambox-kvm
+Environment="RUST_LOG=info"
+Environment="STREAMBOX_KVM_CONFIG=/etc/streambox-kvm/config.toml"
+ExecStartPre=/bin/sh -c 'mkdir -p /var/lib/streambox-kvm /etc/streambox-kvm'
+ExecStart=/usr/bin/streambox-kvm
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=streambox-kvm
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=4096
+
+# Security
+NoNewPrivileges=false
+ProtectSystem=false
+ProtectHome=false
+
+[Install]
+WantedBy=multi-user.target

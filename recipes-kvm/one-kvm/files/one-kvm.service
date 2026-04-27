@@ -1,0 +1,32 @@
+[Unit]
+Description=One-KVM StreamBox - IP-KVM over WebRTC/MJPEG
+Documentation=https://github.com/mofeng-git/One-KVM
+After=network-online.target systemd-modules-load.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/var/lib/one-kvm
+Environment="RUST_LOG=info"
+Environment="ONE_KVM_CONFIG=/etc/one-kvm/config.toml"
+ExecStartPre=/bin/sh -c 'mkdir -p /var/lib/one-kvm /etc/one-kvm'
+ExecStart=/usr/bin/one-kvm
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=one-kvm
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=4096
+
+# Security
+NoNewPrivileges=false
+ProtectSystem=false
+ProtectHome=false
+
+[Install]
+WantedBy=multi-user.target
