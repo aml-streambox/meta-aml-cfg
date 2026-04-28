@@ -1,1 +1,1 @@
-PACKAGECONFIG:append = " webrtc"
+PACKAGECONFIG:append = " webrtc srtp"
