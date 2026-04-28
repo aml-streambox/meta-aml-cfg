@@ -28,9 +28,9 @@ CARGO_SRC_DIR = ""
 inherit cargo systemd
 
 # The current vendored Rust dependency graph requires Cargo/Rust newer than the
-# kirkstone-provided 1.59 toolchain. Use the local rustup toolchain for Cargo and
-# rustc while keeping Yocto's cross-linker wrapper and target sysroot.
-ONE_KVM_RUST_TOOLCHAIN ?= "/home/anshi/yocto/.rustup/toolchains/1.95.0-x86_64-unknown-linux-gnu"
+# kirkstone-provided 1.59 toolchain. Use the local rustup stable toolchain for
+# Cargo and rustc while keeping Yocto's cross-linker wrapper and target sysroot.
+ONE_KVM_RUST_TOOLCHAIN ?= "${HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu"
 ONE_KVM_RUST_TARGET ?= "aarch64-unknown-linux-gnu"
 CARGO = "${ONE_KVM_RUST_TOOLCHAIN}/bin/cargo"
 RUSTC = "${ONE_KVM_RUST_TOOLCHAIN}/bin/rustc"
@@ -93,14 +93,15 @@ RDEPENDS:${PN} = " \
     systemd \
     udev \
     libusb1 \
-    kernel-module-libcomposite \
-    kernel-module-usb-f-hid \
-    kernel-module-usb-f-mass-storage \
 "
+
+# The Amlogic 5.15 kernel builds USB gadget/configfs support into the kernel
+# (CONFIG_USB_LIBCOMPOSITE=y, CONFIG_USB_F_HID=y, CONFIG_USB_F_MASS_STORAGE=y),
+# so there are no kernel-module-* packages to depend on here.
 
 # systemd service
 SYSTEMD_SERVICE:${PN} = "one-kvm.service"
-SYSTEMD_AUTO_ENABLE = "enable"
+SYSTEMD_AUTO_ENABLE = "disable"
 
 # The binary name produced by cargo
 CARGO_BIN_NAME = "one-kvm"

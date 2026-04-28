@@ -182,6 +182,7 @@ RDEPENDS:packagegroup-amlogic-baserootfs = "\
     cockpit-systemd \
     cockpit-users \
     cockpit-gst-manager \
+    one-kvm \
     cockpit-navigator \
     cockpit-streambox-settings \
     "
