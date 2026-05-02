@@ -6,9 +6,9 @@ HOMEPAGE = "https://github.com/mofeng-git/One-KVM"
 LICENSE = "GPL-2.0-or-later"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=016b6c2875cfaf9d87362055aae3f974"
 
-# Use the local git repository
+# Use the pushed One-KVM repository, pinned by SRCREV for reproducible builds.
 SRC_URI = " \
-    git:///home/anshi/yocto/one-kvm-streambox/One-KVM-StreamBox;protocol=file;branch=v0.6.2_dev \
+    git://github.com/aml-streambox/One-KVM-StreamBox.git;protocol=https;branch=v0.6.2_dev \
     file://0001-cargo-use-rust-1.59-compatible-feature-names.patch \
     file://0002-axum-server-add-body-data-buf-bound.patch \
     file://one-kvm.service \
