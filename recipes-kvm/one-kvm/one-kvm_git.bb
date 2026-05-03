@@ -118,13 +118,10 @@ do_compile:prepend() {
     export PATH="${ONE_KVM_RUST_TOOLCHAIN}/bin:${PATH}"
     export RUSTC="${RUSTC}"
 
-    if [ -f "${STAGING_LIBDIR_NATIVE}/llvm-rust/lib/libclang.so" ]; then
-        export LIBCLANG_PATH="${STAGING_LIBDIR_NATIVE}/llvm-rust/lib"
-    elif [ -f "/usr/lib/llvm-14/lib/libclang.so" ]; then
-        export LIBCLANG_PATH="/usr/lib/llvm-14/lib"
-    else
-        bbfatal "libclang.so not found for bindgen"
+    if [ ! -f "${STAGING_LIBDIR_NATIVE}/llvm-rust/lib/libclang.so" ]; then
+        bbfatal "libclang.so not found in Yocto native sysroot for bindgen"
     fi
+    export LIBCLANG_PATH="${STAGING_LIBDIR_NATIVE}/llvm-rust/lib"
 
     CLANG_RESOURCE_INCLUDE=""
     for clang_include in "${LIBCLANG_PATH}"/clang/*/include; do
