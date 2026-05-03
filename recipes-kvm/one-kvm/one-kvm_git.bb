@@ -27,15 +27,9 @@ CARGO_SRC_DIR = ""
 
 inherit cargo systemd
 
-# The current vendored Rust dependency graph requires Cargo/Rust newer than the
-# kirkstone-provided 1.59 toolchain. Use the local rustup stable toolchain for
-# Cargo and rustc while keeping Yocto's cross-linker wrapper and target sysroot.
-ONE_KVM_RUST_TOOLCHAIN ?= "${HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu"
-ONE_KVM_RUST_TARGET ?= "aarch64-unknown-linux-gnu"
-CARGO = "${ONE_KVM_RUST_TOOLCHAIN}/bin/cargo"
-RUSTC = "${ONE_KVM_RUST_TOOLCHAIN}/bin/rustc"
-CARGO_BUILD_FLAGS = "-v --target ${ONE_KVM_RUST_TARGET} ${BUILD_MODE} --manifest-path=${MANIFEST_PATH}"
-CARGO_TARGET_SUBDIR = "${ONE_KVM_RUST_TARGET}/${BUILD_DIR}"
+# Build with Yocto's native Cargo/Rust and target specification so clean
+# builders do not depend on a host rustup installation.
+RUSTC = "rustc"
 
 # Match the verified direct AML build: use the AML capture/encoder path and
 # skip the generic V4L2 default feature.
@@ -107,16 +101,6 @@ SYSTEMD_AUTO_ENABLE = "disable"
 CARGO_BIN_NAME = "one-kvm"
 
 do_compile:prepend() {
-    if [ ! -x "${RUSTC}" ] || [ ! -x "${CARGO}" ]; then
-        bbfatal "Rust toolchain not found at ${ONE_KVM_RUST_TOOLCHAIN}"
-    fi
-    if [ ! -d "${ONE_KVM_RUST_TOOLCHAIN}/lib/rustlib/${ONE_KVM_RUST_TARGET}" ]; then
-        bbfatal "Rust target ${ONE_KVM_RUST_TARGET} is not installed in ${ONE_KVM_RUST_TOOLCHAIN}"
-    fi
-
-    export PATH="${ONE_KVM_RUST_TOOLCHAIN}/bin:${PATH}"
-    export RUSTC="${RUSTC}"
-
     if [ -f "${STAGING_LIBDIR_NATIVE}/llvm-rust/lib/libclang.so" ]; then
         export LIBCLANG_PATH="${STAGING_LIBDIR_NATIVE}/llvm-rust/lib"
     elif [ -f "/usr/lib/llvm-14/lib/libclang.so" ]; then
@@ -202,7 +186,7 @@ multiplexing = false
 cainfo = "${RECIPE_SYSROOT_NATIVE}/etc/ssl/certs/ca-certificates.crt"
 
 # Rust target
-[target.${ONE_KVM_RUST_TARGET}]
+[target.${HOST_SYS}]
 linker = "${WORKDIR}/wrapper/target-rust-ccld"
 
 # BUILD_SYS
