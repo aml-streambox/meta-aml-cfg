@@ -27,9 +27,17 @@ CARGO_SRC_DIR = ""
 
 inherit cargo systemd
 
-# Build with Yocto's native Cargo/Rust and target specification so clean
-# builders do not depend on a host rustup installation.
-RUSTC = "rustc"
+# Use a pinned Yocto-managed native Rust/Cargo toolchain. The vendored One-KVM
+# dependency graph uses Cargo feature syntax newer than kirkstone's Rust 1.59.
+ONE_KVM_RUST_TOOLCHAIN = "${RECIPE_SYSROOT_NATIVE}${prefix}/lib/rust-official"
+ONE_KVM_RUST_TARGET ?= "aarch64-unknown-linux-gnu"
+CARGO = "${ONE_KVM_RUST_TOOLCHAIN}/bin/cargo"
+RUSTC = "${ONE_KVM_RUST_TOOLCHAIN}/bin/rustc"
+CARGO_BUILD_FLAGS = "-v --target ${ONE_KVM_RUST_TARGET} ${BUILD_MODE} --manifest-path=${MANIFEST_PATH}"
+CARGO_TARGET_SUBDIR = "${ONE_KVM_RUST_TARGET}/${BUILD_DIR}"
+
+# Do not pass kirkstone's Rust 1.59 libstd path to the newer upstream rustc.
+RUSTFLAGS = "${RUST_DEBUG_REMAP}"
 
 # Match the verified direct AML build: use the AML capture/encoder path and
 # skip the generic V4L2 default feature.
@@ -55,8 +63,7 @@ python do_patch:prepend() {
 
 # Native build dependencies
 DEPENDS = " \
-    cargo-native \
-    rust-native \
+    rust-official-native \
     rust-llvm-native \
     pkgconfig-native \
     protobuf-native \
@@ -101,6 +108,16 @@ SYSTEMD_AUTO_ENABLE = "disable"
 CARGO_BIN_NAME = "one-kvm"
 
 do_compile:prepend() {
+    if [ ! -x "${RUSTC}" ] || [ ! -x "${CARGO}" ]; then
+        bbfatal "Managed Rust toolchain not found at ${ONE_KVM_RUST_TOOLCHAIN}"
+    fi
+    if [ ! -d "${ONE_KVM_RUST_TOOLCHAIN}/lib/rustlib/${ONE_KVM_RUST_TARGET}" ]; then
+        bbfatal "Rust target ${ONE_KVM_RUST_TARGET} is not installed in ${ONE_KVM_RUST_TOOLCHAIN}"
+    fi
+
+    export PATH="${ONE_KVM_RUST_TOOLCHAIN}/bin:${PATH}"
+    export RUSTC="${RUSTC}"
+
     if [ -f "${STAGING_LIBDIR_NATIVE}/llvm-rust/lib/libclang.so" ]; then
         export LIBCLANG_PATH="${STAGING_LIBDIR_NATIVE}/llvm-rust/lib"
     elif [ -f "/usr/lib/llvm-14/lib/libclang.so" ]; then
@@ -186,7 +203,7 @@ multiplexing = false
 cainfo = "${RECIPE_SYSROOT_NATIVE}/etc/ssl/certs/ca-certificates.crt"
 
 # Rust target
-[target.${HOST_SYS}]
+[target.${ONE_KVM_RUST_TARGET}]
 linker = "${WORKDIR}/wrapper/target-rust-ccld"
 
 # BUILD_SYS
