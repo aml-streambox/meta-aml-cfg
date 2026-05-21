@@ -1,0 +1,15 @@
+[Unit]
+Description=StreamBox Broadcast System WebUI
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/www/sbs-webui
+ExecStart=/usr/bin/sbs-webui-http
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
