@@ -43,7 +43,7 @@ EXTRA_OEMESON = " \
 "
 
 SYSTEMD_SERVICE:${PN} = "sbs-server.service"
-SYSTEMD_AUTO_ENABLE:${PN} = "enable"
+SYSTEMD_AUTO_ENABLE:${PN} = "disable"
 
 do_install:append() {
     install -d ${D}${systemd_system_unitdir}

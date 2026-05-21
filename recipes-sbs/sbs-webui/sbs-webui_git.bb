@@ -22,7 +22,7 @@ do_configure[noexec] = "1"
 do_compile[noexec] = "1"
 
 SYSTEMD_SERVICE:${PN} = "sbs-webui.service"
-SYSTEMD_AUTO_ENABLE:${PN} = "enable"
+SYSTEMD_AUTO_ENABLE:${PN} = "disable"
 
 python do_unpack:prepend() {
     import shutil
