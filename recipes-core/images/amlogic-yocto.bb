@@ -18,12 +18,16 @@ PACKAGE_DEBUG_SPLIT_STYLE = 'debug-without-src'
 
 LICENSE = "MIT"
 
-IMAGE_FEATURES += "splash "
+IMAGE_FEATURES += "splash package-management"
 #IMAGE_FEATURES += "tools-debug "
 
 IMAGE_INSTALL += " \
     packagegroup-amlogic-baserootfs \
     packagegroup-core-buildessential \
+    opkg \
+    opkg-arch-config \
+    sbs-server \
+    sbs-webui \
     ${@bb.utils.contains('DISTRO_FEATURES', 'selinux', 'auditd', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'selinux', bb.utils.contains('DISTRO_FEATURES', 'selinux-debug', \
     'packagegroup-core-selinux', 'packagegroup-selinux-minimal selinux-autorelabel', d), '', d)} \

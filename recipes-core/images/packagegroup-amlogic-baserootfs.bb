@@ -185,6 +185,7 @@ RDEPENDS:packagegroup-amlogic-baserootfs = "\
     one-kvm \
     cockpit-navigator \
     cockpit-streambox-settings \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'sbs', 'sbs-server sbs-webui', '', d)} \
     "
 
 #VENC related
