@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 SRC_URI = " \
     git://git@github.com/aml-streambox/sbs-server.git;protocol=ssh;branch=v0.2_dev \
 "
-SRCREV = "ee241eaca2c745f88eefb1627ef3bd4410e75e59"
+SRCREV = "6d4a9249808af7e17909ea3a9a3c14ce1b3dcb32"
 
 PV = "0.2+git${SRCPV}"
 S = "${WORKDIR}/git"
@@ -66,8 +66,46 @@ RDEPENDS:${PN} += " \
     bash \
     gstreamer1.0 \
     gstreamer1.0-libav \
+    gstreamer1.0-plugins-base \
+    gstreamer1.0-plugins-base-alsa \
+    gstreamer1.0-plugins-base-app \
+    gstreamer1.0-plugins-base-audioconvert \
+    gstreamer1.0-plugins-base-audiomixer \
+    gstreamer1.0-plugins-base-audioresample \
+    gstreamer1.0-plugins-base-opus \
+    gstreamer1.0-plugins-base-playback \
+    gstreamer1.0-plugins-base-typefindfunctions \
+    gstreamer1.0-plugins-base-videoconvert \
+    gstreamer1.0-plugins-base-videoscale \
+    gstreamer1.0-plugins-base-videotestsrc \
+    gstreamer1.0-plugins-base-volume \
     gstreamer1.0-plugins-bad \
+    gstreamer1.0-plugins-bad-dtls \
+    gstreamer1.0-plugins-bad-mpegtsmux \
+    gstreamer1.0-plugins-bad-rtmp \
+    gstreamer1.0-plugins-bad-rtmp2 \
+    gstreamer1.0-plugins-bad-srt \
+    gstreamer1.0-plugins-bad-srtp \
+    gstreamer1.0-plugins-bad-videoparsersbad \
+    gstreamer1.0-plugins-bad-webrtc \
     gstreamer1.0-plugins-good \
+    gstreamer1.0-plugins-good-audioparsers \
+    gstreamer1.0-plugins-good-audiofx \
+    gstreamer1.0-plugins-good-equalizer \
+    gstreamer1.0-plugins-good-flv \
+    gstreamer1.0-plugins-good-gdkpixbuf \
+    gstreamer1.0-plugins-good-imagefreeze \
+    gstreamer1.0-plugins-good-isomp4 \
+    gstreamer1.0-plugins-good-jpeg \
+    gstreamer1.0-plugins-good-level \
+    gstreamer1.0-plugins-good-matroska \
+    gstreamer1.0-plugins-good-png \
+    gstreamer1.0-plugins-good-rtp \
+    gstreamer1.0-plugins-good-rtpmanager \
+    gstreamer1.0-plugins-good-soup \
+    gstreamer1.0-plugins-good-udp \
+    gstreamer1.0-plugins-good-video4linux2 \
+    gst-plugin-aml-v4l2dec \
     gst-plugin-vfmcap \
     libge2d \
     libion \
