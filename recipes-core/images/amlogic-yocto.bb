@@ -26,6 +26,8 @@ IMAGE_INSTALL += " \
     packagegroup-core-buildessential \
     opkg \
     opkg-arch-config \
+    cifs-utils \
+    nfs-utils-client \
     sbs-server \
     sbs-webui \
     ${@bb.utils.contains('DISTRO_FEATURES', 'selinux', 'auditd', '', d)} \
