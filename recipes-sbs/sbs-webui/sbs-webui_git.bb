@@ -12,6 +12,7 @@ SRC_URI = " \
 SRCREV = "59d5bce4b6e7c254d7a2ac353417e4a7153d36e0"
 
 PV = "0.3+git${SRCPV}"
+PR = "r1"
 S = "${WORKDIR}/git"
 
 inherit systemd
