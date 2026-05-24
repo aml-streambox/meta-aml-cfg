@@ -4,14 +4,14 @@ HOMEPAGE = "https://github.com/aml-streambox/sbs-client-webui"
 LICENSE = "CLOSED"
 
 SRC_URI = " \
-    git://git@github.com/aml-streambox/sbs-client-webui.git;protocol=ssh;branch=v0.2_dev \
+    git://git@github.com/aml-streambox/sbs-client-webui.git;protocol=ssh;branch=v0.3_dev \
     file://sbs-webui-dist.tar.gz \
     file://sbs-webui.service \
     file://sbs-webui-http.py \
 "
-SRCREV = "a63f26a33553bfaf5144c274d91728655c1aa13c"
+SRCREV = "59d5bce4b6e7c254d7a2ac353417e4a7153d36e0"
 
-PV = "0.2+git${SRCPV}"
+PV = "0.3+git${SRCPV}"
 S = "${WORKDIR}/git"
 
 inherit systemd

@@ -5,11 +5,11 @@ LICENSE = "GPL-2.0-or-later"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
 SRC_URI = " \
-    git://git@github.com/aml-streambox/sbs-server.git;protocol=ssh;branch=v0.2_dev \
+    git://git@github.com/aml-streambox/sbs-server.git;protocol=ssh;branch=v0.3_dev \
 "
-SRCREV = "4d0e09d0849e866ccf63c0bd14066ef0e39afbeb"
+SRCREV = "4f6445778ea68efa11e22fe8df80b779dac025ca"
 
-PV = "0.2+git${SRCPV}"
+PV = "0.3+git${SRCPV}"
 S = "${WORKDIR}/git"
 
 inherit meson pkgconfig systemd
