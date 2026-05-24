@@ -12,7 +12,7 @@ SRC_URI = " \
 SRCREV = "59d5bce4b6e7c254d7a2ac353417e4a7153d36e0"
 
 PV = "0.3+git${SRCPV}"
-PR = "r1"
+PR = "r2"
 S = "${WORKDIR}/git"
 
 inherit systemd
@@ -33,7 +33,16 @@ python do_unpack:prepend() {
 do_install() {
     rm -rf ${D}${localstatedir}/www/sbs-webui
     install -d ${D}${localstatedir}/www/sbs-webui
-    cp -r ${WORKDIR}/dist/. ${D}${localstatedir}/www/sbs-webui/
+    if [ -d ${WORKDIR}/dist ]; then
+        cp -r ${WORKDIR}/dist/. ${D}${localstatedir}/www/sbs-webui/
+    elif [ -f ${WORKDIR}/index.html ]; then
+        install -m 0644 ${WORKDIR}/index.html ${D}${localstatedir}/www/sbs-webui/
+        if [ -d ${WORKDIR}/assets ]; then
+            cp -r ${WORKDIR}/assets ${D}${localstatedir}/www/sbs-webui/
+        fi
+    else
+        bbfatal "sbs-webui dist bundle not found in ${WORKDIR}"
+    fi
 
     install -d ${D}${bindir}
     install -m 0755 ${WORKDIR}/sbs-webui-http.py ${D}${bindir}/sbs-webui-http
