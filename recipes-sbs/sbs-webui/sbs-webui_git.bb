@@ -9,7 +9,7 @@ SRC_URI = " \
     file://sbs-webui.service \
     file://sbs-webui-http.py \
 "
-SRCREV = "d9e11d3e0dd0b84970152a0dbd88a1eddac111c8"
+SRCREV = "fbdb9efc7b8511d2dc5ab91069b404b3963b0549"
 
 PV = "0.3+git${SRCPV}"
 PR = "r2"
