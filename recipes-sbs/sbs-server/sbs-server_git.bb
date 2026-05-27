@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 SRC_URI = " \
     git://git@github.com/aml-streambox/sbs-server.git;protocol=ssh;branch=v0.3_dev \
 "
-SRCREV = "3811adbd3acfa39606b38fdf205086c4c8cd5d6f"
+SRCREV = "e9412645f3de1b6c9988ae2a0d86bcc78f281a05"
 
 PV = "0.3+git${SRCPV}"
 S = "${WORKDIR}/git"
