@@ -2,13 +2,47 @@
 
 import functools
 import os
+import socket
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlsplit
 
 
 class SbsWebUiHandler(SimpleHTTPRequestHandler):
+    def handle_one_request(self):
+        try:
+            first_bytes = self.connection.recv(2, socket.MSG_PEEK)
+        except OSError:
+            first_bytes = b""
+        if first_bytes.startswith(b"\x16\x03"):
+            self.send_https_on_http_response()
+            return
+        return super().handle_one_request()
+
+    def parse_request(self):
+        if self.raw_requestline.startswith(b"\x16\x03"):
+            self.send_https_on_http_response()
+            return False
+        return super().parse_request()
+
+    def send_https_on_http_response(self):
+        body = (
+            "This is the SBS WebUI HTTP port, but it received HTTPS/TLS traffic.\n"
+            "Open the WebUI with http://<device-address>:8080/ instead of https://.\n"
+        ).encode("utf-8")
+        self.requestline = "TLS handshake on HTTP port"
+        self.request_version = "HTTP/1.0"
+        self.command = None
+        self.path = ""
+        self.close_connection = True
+        self.send_response(400, "HTTPS traffic received on HTTP port")
+        self.send_header("Content-Type", "text/plain; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Connection", "close")
+        self.end_headers()
+        self.wfile.write(body)
+
     def request_path(self):
-        return urlsplit(self.path).path
+        return urlsplit(getattr(self, "path", "")).path
 
     def send_head(self):
         path = self.request_path()
