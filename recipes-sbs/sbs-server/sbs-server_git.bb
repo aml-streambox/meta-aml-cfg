@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 SRC_URI = " \
     git://git@github.com/aml-streambox/sbs-server.git;protocol=ssh;branch=v0.3_dev \
 "
-SRCREV = "85b09eb754abfdb38b2f1846b4ebacdd37d3fd14"
+SRCREV = "882e9cffeb3a7dea5663965987605f98bc90b0d6"
 
 PV = "0.3+git${SRCPV}"
 S = "${WORKDIR}/git"
@@ -105,6 +105,7 @@ RDEPENDS:${PN} += " \
     gstreamer1.0-plugins-good-soup \
     gstreamer1.0-plugins-good-udp \
     gstreamer1.0-plugins-good-video4linux2 \
+    gstreamer1.0-plugins-streambox \
     gst-plugin-aml-v4l2dec \
     gst-plugin-vfmcap \
     libge2d \
